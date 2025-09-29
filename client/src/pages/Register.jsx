@@ -4,6 +4,8 @@ import axios from 'axios'
 
 const Register = () => {
 
+    const api = import.meta.env.VITE_API_URL;
+
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
@@ -19,7 +21,7 @@ const Register = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('http://localhost:5000/api/auth/register', formData);
+            const res = await axios.post(`${api}/api/auth/register`, formData);
             console.log(res.data);
             setFormData({name: '', email: '', password: ''});
             navigate('/login');

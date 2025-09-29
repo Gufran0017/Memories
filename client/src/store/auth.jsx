@@ -1,82 +1,90 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from 'axios';
 
-
 export const AuthContext = createContext();
 
-export const AuthProvider = ({children}) => {
+export const AuthProvider = ({ children }) => {
+
+    // ✅ Use Vite env variable
+    const api = import.meta.env.VITE_API_URL;
 
     const [token, setToken] = useState(localStorage.getItem('token'));
     const [allMemories, setAllMemories] = useState([]);
     const [refresh, setRefresh] = useState(false);
+    const [errorMsg, setErrorMsg] = useState('');
 
+    // Store token in localStorage
     const storeTokenInLs = (serverToken) => {
         setToken(serverToken);
-        return localStorage.setItem('token', serverToken);
-    }
+        localStorage.setItem('token', serverToken);
+    };
 
-    let isLoggedIn = !!token;
+    const isLoggedIn = !!token;
 
-    // Logout functionality by removing token
+    // Logout user
     const LogoutUser = () => {
         setToken('');
-        return localStorage.removeItem('token');
-    }
+        localStorage.removeItem('token');
+    };
 
+    // Get all memories
     const getAllMemories = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/api/user/memories', {headers: {Authorization: `Bearer ${token}`}})
-            console.log(res.data);
+            const res = await axios.get(`${api}/api/user/memories`, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
             setAllMemories(res.data.data);
-        } 
-        catch(error) {
-            console.log("Get Memories Error! ",error.response);
-            setErrorMsg(error.response.data.msg);
+        } catch (error) {
+            console.log("Get Memories Error!", error?.response || error);
+            setErrorMsg(error?.response?.data?.msg || 'Error fetching memories');
         }
-    }
+    };
 
+    // Update a memory
     const updateMemory = async (id, updateData) => {
-         try {
-            const res = await axios.put(`http://localhost:5000/api/user/memories/${id}`,updateData,
-                 {
-                    headers: {Authorization: `Bearer ${token}`
-                  }
-                }
+        try {
+            const res = await axios.put(
+                `${api}/api/user/memories/${id}`,
+                updateData,
+                { headers: { Authorization: `Bearer ${token}` } }
             );
-            console.log(res.data);
             setRefresh(prev => !prev);
-        } 
-
-        catch (error) {
-            console.log("Update Memory error! ", error);
+        } catch (error) {
+            console.log("Update Memory Error!", error?.response || error);
         }
-    }
+    };
 
+    // Delete a memory
     const deleteMemory = async (id) => {
         try {
-            const res = await axios.delete(`http://localhost:5000/api/user/memories/${id}`, {headers: {Authorization: `Bearer ${token}`}});
-            console.log(res.data);
+            const res = await axios.delete(`${api}/api/user/memories/${id}`, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
             setRefresh(prev => !prev);
-        } 
-
-        catch (error) {
-            console.log("Delete Memory error! ", error);
+        } catch (error) {
+            console.log("Delete Memory Error!", error?.response || error);
         }
-    }
+    };
 
     useEffect(() => {
-        getAllMemories();
-    }, [refresh]);
-
+        if (token) getAllMemories();
+    }, [refresh, token]);
 
     return (
-        <AuthContext.Provider value={{storeTokenInLs, isLoggedIn, LogoutUser, allMemories, deleteMemory, setRefresh, updateMemory}}>
+        <AuthContext.Provider value={{
+            storeTokenInLs,
+            isLoggedIn,
+            LogoutUser,
+            allMemories,
+            deleteMemory,
+            setRefresh,
+            updateMemory,
+            errorMsg
+        }}>
             {children}
         </AuthContext.Provider>
     );
 };
 
-
-export const useAuth = () => {
-    return useContext(AuthContext);
-}
+// Custom hook for easy access
+export const useAuth = () => useContext(AuthContext);

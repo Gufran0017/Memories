@@ -6,6 +6,8 @@ import MemoryCard from '../components/MemoryCard';
 const Post = ({token}) => {
 
   const { isLoggedIn} = useAuth();
+  
+  const api = import.meta.env.VITE_API_URL;
 
   const {allMemories, setRefresh} = useContext(AuthContext);
 
@@ -52,7 +54,7 @@ const Post = ({token}) => {
       
       payload.append('location', formData.location);
 
-      const res = await axios.post('http://localhost:5000/api/user/memories', payload, {headers: {Authorization: `Bearer ${token}`}});
+      const res = await axios.post(`${api}/api/user/memories`, payload, {headers: {Authorization: `Bearer ${token}`}});
       console.log(token);
       console.log(res.data);
       setRefresh(prev => !prev);

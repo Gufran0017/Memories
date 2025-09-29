@@ -5,6 +5,8 @@ import { useAuth } from '../store/auth';
 
 const Login = () => {
 
+  
+  const api = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const {storeTokenInLs} = useAuth();
 
@@ -20,7 +22,7 @@ const Login = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try{
-      const res = await axios.post('http://localhost:5000/api/auth/login', formData);
+      const res = await axios.post(`${api}/api/auth/login`, formData);
       console.log(res.data);
       setFormData({email: '', password: ''});
       storeTokenInLs(res.data.token);
