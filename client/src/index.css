@@ -1,0 +1,326 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Navbar */
+.navbar{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.nav-logo h1{
+  font-size: 2.8rem;
+  color: rgb(16, 179, 124);
+  font-style: italic;
+}
+
+.nav-links{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 90px;
+}
+
+.nav-links li{
+  list-style: none;
+}
+
+.nav-links li a{
+  font-size: 21px;
+  text-decoration: none;
+  color: rgba(0, 128, 0, 0.692);
+}
+
+.login-btn button{
+  padding: 7px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  color: rgba(0, 128, 0, 0.692);
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.login-btn button:hover{
+  background-color: rgb(205, 219, 231);
+}
+
+/* Hero */
+
+.hero{
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: rgba(255, 0, 0, 0.726);
+}
+
+.hero span{
+  color: rgb(16, 179, 124);
+}
+
+/* Login and Register */
+
+.register{
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.register h1{
+    color: rgb(16, 179, 124);
+}
+
+.contact-col{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+}
+
+.contact-col input, .contact-col textarea{
+    display: block;
+    width: 100%;
+    background: #EBECFE;
+    padding: 15px;
+    border: 0;
+    outline: 0;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    resize: none;
+    border-radius: 2px;
+}
+
+.submit-btn{
+    padding: 10px 30px;
+    border: none;
+    border-radius: 2px;
+    background: rgb(16, 179, 124);
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.log-link{
+    text-decoration: none;
+    color: rgb(16, 179, 124);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.log-link:hover{
+    text-decoration: underline;
+    color: rgb(16, 179, 124);
+}
+
+.error-para{
+    display: flex;
+    align-items: center;
+    color: red;
+    margin-bottom: 15px;
+}
+
+/*------------------ Memroies -------------------*/
+
+.memory{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.memories h1{
+  margin-top: -130px;
+  font-size: 3rem;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  letter-spacing: 10px;
+}
+
+.memory-body{
+  display: flex;
+  height: 100vh;
+  width: 98vw;
+  margin-top: 50px;
+}
+
+.left-body{
+  flex: 1;                
+  background-color: rgba(202, 52, 52, 0.349);
+  padding: 20px;
+}
+
+.right-body{
+  flex: 4;                
+  background-color: rgba(16, 179, 125, 0.171);
+  padding: 20px;
+}
+
+/* ----------------Memory---------------------- */
+
+/* -----------------Layout----------------- */
+.memory-body {
+  display: flex;
+  gap: 30px;
+  padding: 20px;
+  background: #f0f2f5;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* LEFT PANEL */
+.left-body {
+  flex: 0.3;
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.left-body h1 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #333;
+  text-align: center;
+}
+
+/* FORM */
+.memory-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.memory-form input[type="text"],
+.memory-form input[type="file"] {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.memory-form input[type="text"]:focus,
+.memory-form input[type="file"]:focus {
+  border-color: #007bff;
+}
+
+.memory-form button {
+  padding: 12px 15px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.memory-form button:hover {
+  background-color: #0056b3;
+}
+
+/* RIGHT PANEL */
+.right-body {
+  flex: 0.7;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+}
+
+/* NO MEMORY */
+.no-memory {
+  text-align: center;
+  font-size: 1.3rem;
+  color: #e74c3c;
+  padding: 40px 0;
+}
+
+/* MEMORY GRID */
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 10px;
+}
+
+/* Example card styling (MemoryCard wrapper) */
+.memory {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: #fafafa;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.memory:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.memory img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Responsive Typography and Layout */
+@media (max-width: 1024px) {
+  .left-body h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .memory-body {
+    flex-direction: column;
+  }
+
+  .left-body,
+  .right-body {
+    flex: 1;
+    width: 100%;
+  }
+
+  .memory-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .left-body h1 {
+    font-size: 1.3rem;
+  }
+
+  .memory-form input[type="text"],
+  .memory-form input[type="file"] {
+    font-size: 0.9rem;
+  }
+
+  .memory-form button {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .memory-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}

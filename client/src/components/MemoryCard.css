@@ -1,0 +1,170 @@
+.memory-card {
+  background: #fff;
+  width: 180px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+  margin-bottom: 20px;
+  position: relative; /* important for scoped form */
+  max-width: 300px;   /* reduced width */
+}
+
+.memory-card:hover {
+  transform: translateY(-3px);
+}
+
+.memory-image {
+  width: 100%;
+  height: 120px;  /* smaller image height */
+  object-fit: cover;
+}
+
+.memory-content {
+  padding: 12px 15px;
+}
+
+.memory-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.memory-location {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 4px 0;
+}
+
+.memory-summary {
+  font-size: 0.95rem;
+  margin-top: 6px;
+  color: #333;
+}
+
+.memory-people {
+  font-size: 0.8rem;
+  margin-top: 4px;
+  color: #666;
+}
+
+.del-btn {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 15px;
+}
+
+.update-btn, .delete-btn {
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.update-btn {
+  background: #007bff;
+  color: white;
+}
+
+.update-btn:hover {
+  background: #0056b3;
+}
+
+.delete-btn {
+  background: #f0f0f0;
+  color: #e74c3c;
+}
+
+.delete-btn:hover {
+  background: #f9d6d5;
+}
+
+/* ----------------- Scoped Update Form ----------------- */
+.memory-card .update-form-container {
+  margin-top: 10px;
+  background: #f7f7f7;
+  border-radius: 10px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.memory-card .update-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.memory-card .update-form h4 {
+  margin: 0 0 5px 0;
+  color: #007bff;
+  font-size: 1rem;
+}
+
+.memory-card .update-form input {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.memory-card .update-form input:focus {
+  border-color: #007bff;
+}
+
+.memory-card .form-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.memory-card .save-btn {
+  background: #28a745;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+
+.memory-card .save-btn:hover {
+  background: #218838;
+}
+
+.memory-card .cancel-btn {
+  background: #f0f0f0;
+  color: #333;
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+
+.memory-card .cancel-btn:hover {
+  background: #ddd;
+}
+
+/* ----------------- Responsive ----------------- */
+@media(max-width: 600px){
+  .memory-card {
+    max-width: 100%;
+  }
+
+  .memory-image {
+    height: 120px;
+  }
+
+  .update-form input {
+    font-size: 0.85rem;
+    padding: 5px 7px;
+  }
+
+  .save-btn, .cancel-btn {
+    font-size: 0.85rem;
+    padding: 4px 8px;
+  }
+}
